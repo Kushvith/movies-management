@@ -64,8 +64,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="./add actor.php">Actors</a></li>
-                <li class="nav-item"> <a class="nav-link" href="./ui-features/add directors.php">Directors</a></li>
-                <li class="nav-item"> <a class="nav-link" href="./ui-features/add producer.php">Producer</a></li>
+                <li class="nav-item"> <a class="nav-link" href="./add crew.php">crew</a></li>
               </ul>
             </div>
           </li>
@@ -125,7 +124,7 @@
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search...">
+                  <input type="text" class="form-control" id="search" placeholder="Search...">
                 </form>
               </li>
             </ul>

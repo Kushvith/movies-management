@@ -219,7 +219,8 @@ $(document).ready(function () {
                                     contentType: false,
                                     processData: false,
                                     success: function (data) {
-                                          if(data == "donect"){
+                                          if(data == "done"){
+                                                $('#view-data').DataTable().ajax.reload()
                                                 $('#update').show();
                                                 $('#loader1').hide();   
                                                 swal("Successfully Updated", "Actor Updated", "success");
