@@ -69,8 +69,12 @@ $(document).ready(function () {
             }
         })
     }
+    $(document).on('click', '.page-link', function () {
+        var page = $(this).data('page_number');
+        var query = $('#search_box').val();
+        load_data(page, query);
+  });
     $('#search').keyup(function(){
-        alert(2)
         var query = $(this).val();
         load_data(1,query);
     })
@@ -158,7 +162,7 @@ $(document).on('click',"#addlist",function(){
                 method:"POST",
                 data:{id:id},
                 success: function(data){
-                    swal("Successfully Deleted", "Actor Deleted", "success");
+                    swal("Successfully Deleted", "Trailer Deleted", "success");
                     load_data(1)
                     listdata()
                 }

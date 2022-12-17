@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if(!isset($_SESSION["admin_name"])){
+  header("location:../");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,22 +62,6 @@
             transition: transform 0.5s ease;
             -webkit-transition: -webkit-transform 0.5s ease;
             text-transform: uppercase;
-        }
-
-        .btn-transform.transform-vertical .item-1 {
-            transform: rotateX(0deg);
-        }
-
-        .btn-transform.transform-vertical .item-2 {
-            transform: rotateX(180deg);
-        }
-
-        .btn-transform:hover.transform-vertical .item-1 {
-            transform: rotateX(180deg);
-        }
-
-        .btn-transform:hover.transform-vertical .item-2 {
-            transform: rotateX(0deg);
         }
 
         .redbtn {
