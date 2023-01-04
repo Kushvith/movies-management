@@ -1,0 +1,59 @@
+<?php
+include('./config/pdoconfig.php');
+$alert = "";
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+require_once 'phpmailer/Exception.php';
+require_once 'phpmailer/PHPMailer.php';
+require_once 'phpmailer/SMTP.php';
+require_once "mailjet/mailjet-apiv3-php-no-composer-master/vendor/autoload.php";
+$mail = new PHPMailer(true);
+
+$email = $_POST['email'];
+$query = "SELECT * FROM login WHERE Email = '$email'";
+$statement = $connection->prepare($query);
+$statement->execute();
+$result = $statement->rowCount();
+if ($result > 0) {
+    $query = "SELECT * FROM login WHERE email = '$email'";
+    $statement->execute();
+    $results = $statement->fetchAll();
+    foreach ($results as $row) {
+        $name = $row['name'];
+    }
+    // $otp = rand('111111', '999999');
+    $otp = md5(time());
+    $query = "UPDATE login SET md = '$otp' WHERE email = '$email'";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    try {
+        $mail->isSMTP();
+      $mail->Host = 'in-v3.mailjet.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'da3d5408385d2278540684ccb5fd12f4'; // Gmail address which you want to use as SMTP server
+      $mail->Password = 'ae8583951baf92512c3cce32b95ca6da'; // Gmail address Password
+      $mail->SMTPSecure = 'tls';
+      $mail->Port = '587';
+  
+      $mail->setFrom('kushvithchinna900@gmail.com',$name); // Gmail address which you used as SMTP server
+      $mail->addAddress('kushvithchinna900@gmail.com'); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
+  
+      $mail->isHTML(true);
+        $mail->Subject = 'Message From lead management(forgot password)';
+        $mail->Body = "<h3>The is to verify you <b> $name of $email  <b> From lead management
+            <br> Your forgot Password<br>
+              http://35.174.155.153/lm/forgot.php?md5=$otp</h3>";
+
+        $mail->send();
+        echo "user exists";
+        
+    } catch (Exception $e) {
+        $alert = '<div class="alert alert-danger">
+                        <span>' . $e->getMessage() . '</span>
+                      </div>';
+    }
+} else {
+    echo 'invalid user';
+}
+?>

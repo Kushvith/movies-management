@@ -45,7 +45,7 @@ else{
   else{
     $query = "insert into movie 
     (  `name`, `imdb_ratings`, `runtime`, `mmpa`, `releaseyear`, `description`,
-     `director`, `producer`, `music director`,
+     `director`, `producer`, `musicdirector`,
      `trailer`, `actor`, `actor1`, `actor2`, `actor3`, `genre`, `url`, `publicid`)
      values
      ('$name','$imdbrat','$runtime','$mmpa','$releaseyear','$details','$director','$producer',

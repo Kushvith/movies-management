@@ -27,8 +27,7 @@ $id = $_POST['id'];
     $data =  (new UploadApi())->upload($filename,array(
         "folder" => "actor",
         "transformation"=>array(
-        array("gravity"=>"face", "height"=>400, "width"=>400, "crop"=>"crop"),
-        array("radius"=>"max"),
+        array("gravity"=>"face", "height"=>200, "width"=>200, "crop"=>"crop"),
         array("width"=>200, "crop"=>"scale")
         )));
       $url = $data["secure_url"];

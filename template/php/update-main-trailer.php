@@ -4,7 +4,7 @@
     $query = "select  COUNT(*) from trailer WHERE main = 1";
     $statement = $connection->prepare($query);
     $statement->execute();
-    $row_count =$statement->fetchColumn();
+    $row_count =$statement->rowCount();
 if ($row_count > 10) {
   // actors already exits
   echo "exists";

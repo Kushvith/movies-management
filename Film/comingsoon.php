@@ -11,7 +11,7 @@
 <!-- comingsoon14:54-->
 <head>
 	<!-- Basic need -->
-	<title>Open Pediatrics</title>
+	<title>IdShow</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -58,25 +58,12 @@
                     <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>
-            <div class="row">
-            	<div class="remember">
-					<div>
-						<input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
-					</div>
-            		<a href="#">Forget password ?</a>
-            	</div>
-            </div>
+          
            <div class="row">
            	 <button type="submit">Login</button>
            </div>
         </form>
-        <div class="row">
-        	<p>Or via social</p>
-            <div class="social-btn-2">
-            	<a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
-            	<a class="tw" href="#"><i class="ion-social-twitter"></i>twitter</a>
-            </div>
-        </div>
+      
     </div>
 </div>
 <!--end of login form popup-->
@@ -117,12 +104,13 @@
         </form>
     </div>
 </div>
+
 <!--end of signup form popup-->
 <div class="page-single-2">
 	<div class="container">
 		<div class="row ipad-width">
 			<div class="left-content">
-				<a href="index-2.html"><img class="md-logo" src="images/logo1.png" alt=""></a>
+				<a href="index.php"><img class="md-logo" src="images/logo1.png" alt="" width="200px"></a>
 				<h1>Coming soon</h1>
 				<p>We are working hard to get back to you in</p>
 				<div class="row">
@@ -150,12 +138,7 @@
 								</div>
 							</div>	
 						</div>
-						<h3>Nofication me</h3>
-						<form action="#">
-							<input class="email" type="text" placeholder="Enter your email">
-							<input class="redbtn" type="submit" placeholder="subscribe">
-						</form>
-					</div>
+						
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<img class="cm-img" src="images/uploads/cm-img.png" alt="">
 					</div>
@@ -169,6 +152,65 @@
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
 <script src="js/custom.js"></script>
+<?php 
+  require "../config/pdoconfig.php";
+$id = $_GET['id'];
+  $query = "select * from comingsoon where id = '$id'";
+  $statement = $connection->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+if ($result) {
+
+	foreach ($result as $row) {
+		$date = $row['datetime'];
+		echo "<script>
+		function getTimeRemaining(endtime) {
+			var t = Date.parse(endtime) - Date.parse(new Date());
+			var seconds = Math.floor((t / 1000) % 60);
+			var minutes = Math.floor((t / 1000 / 60) % 60);
+			var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+			var days = Math.floor(t / (1000 * 60 * 60 * 24));
+			return {
+			  'total': t,
+			  'days': days,
+			  'hours': hours,
+			  'minutes': minutes,
+			  'seconds': seconds
+			};
+		  }
+		  function initializeClock(id, endtime) {
+			var clock = document.getElementById(id);
+			if( clock != null){
+			  var daysSpan = clock.querySelector('.days');
+			  var hoursSpan = clock.querySelector('.hours');
+			  var minutesSpan = clock.querySelector('.minutes');
+			  var secondsSpan = clock.querySelector('.seconds');
+			  var updateClock = function() {
+			  var t = getTimeRemaining(endtime);
+	  
+			  daysSpan.innerHTML = t.days;
+			  hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+			  minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+			  secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+	  
+			  if (t.total <= 0) {
+				clearInterval(timeinterval);
+				daysSpan.innerHTML = '0';
+				hoursSpan.innerHTML = '0';
+				minutesSpan.innerHTML = '0';
+				secondsSpan.innerHTML = '0';
+			  }
+			}
+			updateClock();
+			var timeinterval = setInterval(updateClock, 1000);
+			}
+		  }
+		var deadline = new Date(Date.parse('$date'));
+		initializeClock('clockdiv', deadline);</script>";
+	}
+}
+
+?>
 </body>
 
 <!-- comingsoon14:55-->
