@@ -2,10 +2,12 @@
     require "../../config/pdoconfig.php";
 $movie = $_POST['movie'];
 $theatre = $_POST['theatre'];
+$price = $_POST['price'];
 $date = $_POST['date'];
 $morn = $_POST['morn'];
 $aft = $_POST['aft'];
 $nig = $_POST['nig'];
+
 
 $valid = 1;
 if($morn == 1){
@@ -47,9 +49,9 @@ $row_count =$statement->fetchColumn();
 
 if($valid == 1){
     $query = "insert into shows
-    (movie_id, theatre_id, show_date,morning, afternoon,evening)
+    (movie_id, theatre_id, show_date,morning, afternoon,evening,price)
      values
-     ('$movie','$theatre','$date','$morn','$aft','$nig')";
+     ('$movie','$theatre','$date','$morn','$aft','$nig','$price')";
      $statement = $connection->prepare($query);
      $run = $statement->execute();
      if($run){

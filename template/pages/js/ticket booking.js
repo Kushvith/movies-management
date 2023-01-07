@@ -164,8 +164,9 @@ $(document).on('click','#view',function(){
         theatre = $('#theatre').val();
         date = $('#date').val();
         type = $('#type').val();
-       console.log(movie,theatre,date,type)
-        if (movie == "" || type == "" || theatre == "" || date == "" ) {
+        price = $('#priceval').val();
+       console.log(movie,theatre,date,type,price)
+        if (movie == "" || type == "" || theatre == "" || date == ""||price=="" ) {
               console.log("All feilds required")
               swal({
                     icon: "error",
@@ -182,6 +183,7 @@ $(document).on('click','#view',function(){
               formdata.append('movie', movie)
               formdata.append('theatre', theatre)
               formdata.append('date', date)
+              formdata.append('price',price)
               $.each(type, function (index, i) {
                if(i == 'Morning')
                {
@@ -200,6 +202,7 @@ $(document).on('click','#view',function(){
                formdata.append('morn', morn)
                formdata.append('aft', aft)
                formdata.append('nig',nig)
+               
           })
               
               $.ajax({
@@ -217,6 +220,7 @@ $(document).on('click','#view',function(){
                                 $('#theatre').val('');
                                 $('#date').val('');
                                 $('#type').val('');
+                                $('#price').val('')
                                 swal("Successfully Created", "Show Created", "success");
                                 load_data(1)
 

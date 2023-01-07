@@ -239,6 +239,11 @@
                                                                     <option value="Night">Night</option>
                                                                 </select>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label>price</label>
+                                                                <br>
+                                                                <input type="number" id="priceval" placeholder="price" class="form-control">
+                                                </div>
                                                             <p class="text-white" id="loader1">Please wait......</p>
                                                             <button type="button" class="btn btn-success btn-icon-text"
                                                                 id="submit-show">

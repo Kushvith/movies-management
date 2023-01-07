@@ -88,7 +88,8 @@ if ($result > 0) {
             <div class="row ipad-width2">
                 <div class="col-md-6 col-6 col-sm-12 col-xs-12">
                     <div class="row">
-                        <form method="post" action="./paytm/pgRedirect.php">
+                        <form method="post" action="">
+                        <div class="message"></div>
                         <input value="<?php echo $id; ?>" id="m_id" hidden>
                         <div class="col-md-12 form-it">
                             <label>select theatre</label>
@@ -135,21 +136,16 @@ if ($result > 0) {
                             <label>price</label>
                             <input type="number" placeholder="Price" min="1" id="price" name="TXN_AMOUNT" readonly  required>
                         </div>
-                        <input id="ORDER_ID" tabindex="1" maxlength="20" size="20"
-						name="ORDER_ID" autocomplete="off"
-						value="<?php echo  "ORDS" . rand(10000,99999999)?>" hidden>
-                        <input type="hidden" value="<?php echo $_SESSION['email'];?>" name="email"/>
-                        <input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?php echo $_SESSION['id'] ?>" hidden>
-                        <input id="CHANNEL_ID" tabindex="4" maxlength="12"
-						size="12" name="CHANNEL_ID" autocomplete="off" value="WEB" hidden>
-                        <input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail" hidden>
+                      <input type="hidden" value="<?php if (isset($_SESSION['email'])) {
+                          echo $_SESSION['email'];
+                      }?>" id="email">
                     </div>
                     <br>
                     <br>
 
                     <div class="row">
                         <div class="col-md-2">
-                            <input class="submit" class="item item-1 redbtn" type="submit" value="book ticket">
+                            <input class="submit" class="item item-1 redbtn" type="button" id="submit" value="book ticket">
                         </div>
                     </div>
         </form>
@@ -210,8 +206,40 @@ if ($result > 0) {
                     }
                 })
             })
+            $(document).on('click','#submit',function(){
+               $(this).hide();
+                t_name = $('#theatre').val()
+                showdate = $('#show-date').val()
+                showtime = $('#show-time').val()
+                tickets = $('#tickets').val()
+                amt = $('#price').val()
+                email = $('#email').val()
+                if(t_name == ""|| showdate==""||showtime==""||tickets==""||amt == ""){
+                    toastr.error("all feilds required")
+                }
+                else if(email == ""){
+                    toastr.error("Login to book")
+                }
+                else{
+                    $.ajax({
+                    url: "./php/book.php",
+                    method: "POST",
+                    data: { t_name,showdate,showtime,tickets,amt,email},
+                    success: function (data) {
+                     if(data == "success"){
+                        $('#submit').show();
+                        toastr.success("ticket sent to email")
+                     }else{
+                        $('#submit').show();
+                        $('#message').html("<div class='alert alert-danger'>"+data+"</div>")
+                     }
+                    }
+                })
+                }
+            })
         })
     </script>
+
 </body>
 
 <!-- celebritygrid0211:56-->

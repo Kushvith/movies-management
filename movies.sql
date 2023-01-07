@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2023 at 01:00 PM
+-- Generation Time: Jan 07, 2023 at 08:23 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -191,13 +191,6 @@ CREATE TABLE `shows` (
   `evening` int(5) NOT NULL,
   `price` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `shows`
---
-
-INSERT INTO `shows` (`id`, `movie_id`, `theatre_id`, `show_date`, `morning`, `afternoon`, `evening`, `price`) VALUES
-(23, 6, 2, '2023-01-11', 1, 0, 0, 60);
 
 -- --------------------------------------------------------
 
@@ -390,7 +383,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `theatre`

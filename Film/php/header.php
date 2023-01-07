@@ -28,14 +28,6 @@ if(isset( $_SESSION['email'])){
                     <input type="password" name="password" id="password" placeholder="******"  required="required" />
                 </label>
             </div>
-            <div class="row">
-            	<div class="remember">
-					<div>
-				
-					</div>
-            		<a href="#">Forget password ?</a>
-            	</div>
-            </div>
            <div class="row">
            	 <button type="button" id="login_submit">Login</button>
            </div>
