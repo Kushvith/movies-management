@@ -161,6 +161,27 @@
 							</div>
 						</div>	
 					</form>
+					<form id="address" class="password" action="./php/update-useradd.php" method="post">
+					<h4>03. address</h4>
+					<div class="row">
+						<div class="col-md-6 form-it">
+							<label>address</label>
+							<textarea id="address1" name="address" placeholder="address"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-it">
+							<label>Pin code</label>
+							<input type="text" id="zip" name="zip"  placeholder="zip" >
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-2">
+							<input class="submit" type="submit" value="submit" id="sub">
+						</div>
+					</div>	
+				</form>
 				</div>
 			</div>
 		</div>
@@ -204,8 +225,34 @@
 		<script src="js/plugins2.js"></script>
 		<script src="js/custom.js"></script>
 		<script>
-			$(document).ready(function () {
+			$(document).ready(function () {$(document).on('click','#sub',function(){
+					var address = $('#address').val()
+					var zip = $('#zip').val()
+					alert(address,zip)
+					if (address == '' || zip == '') {
+						toastr.warning("all feilds required")
+					}
+					else{
+						$.ajax({
+							url: "./php/update-useradd.php",
+							method: "POST",
+							data: { address, zip },
+							success: function (data) {
+								if (data == "wroning") {
+									toastr.error("");
+								} else {
+									toastr.success("address updated successfully")
+									$('#address1').val('')
+									$('#zip').val('')
+
+								}
+
+							}
+						})
+					}
+				})
 				$(document).on('click', '#save', function () {
+					alert( $('#name').val())
 					var name = $('#name').val();
 					var email = $('#email').val();
 					if (name == '') {
@@ -277,6 +324,7 @@
 						})
 					}
 				})
+				
 			})
 		</script>
 </body>

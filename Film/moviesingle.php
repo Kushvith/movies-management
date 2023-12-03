@@ -18,7 +18,7 @@
             $statement->execute();
             $result = $statement->fetchAll();
             if ($result) {
-
+				
 	            foreach ($result as $row) {
 		            $mov_title = $row['name'];
 		            $release = $row['releaseyear'];
@@ -74,13 +74,13 @@
 
 <body>
 	<!--preloading-->
-	<div id="preloader">
+	<!-- <div id="preloader">
     <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
     <div id="status">
         <span></span>
         <span></span>
     </div>
-</div>
+</div> -->
 	<!--end of preloading-->
 	<!--login form popup-->
 	<?php
@@ -143,6 +143,21 @@
 							';
 	                            }
                             }
+							$shopquery = "select * from product where movie_name = '$id'";
+							$statement = $connection->prepare($shopquery);
+                            $statement->execute();
+                            $resultproduct = $statement->fetchAll();
+							if($resultproduct)
+							{
+								foreach($resultproduct as $row9)
+								{
+										echo '
+								<div class="btn-transform transform-vertical mt-3">
+								<div><a href="./shopping.php?id=' . $id . '" class="item item-1 yellowbtn"> <i class="ion-card"></i>Shopping</a></div>
+								<div><a href="./shopping.php?id=' . $id. '" class="item item-2 yellowbtn fancybox-media hvr-grow"><i class="ion-card"></i></a></div>
+							</div>';
+								}
+							}
                             ?>
 						
 

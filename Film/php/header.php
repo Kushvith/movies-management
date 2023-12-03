@@ -128,10 +128,17 @@ if(isset( $_SESSION['email'])){
 							
 						</li>
 						<li class="dropdown first">
+							<a href="ticket.php" class="btn btn-default lv1">
+							My Tickets 
+							</a>
+							
+						</li>
+						<li class="dropdown first">
 							<a href="userprofile.php" class="btn btn-default lv1">
 							community
 							</a>
 						</li>
+						
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">              
 								

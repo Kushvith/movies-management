@@ -122,7 +122,18 @@ $(document).ready(function () {
       }
       
       //view model
-    
+      $(document).on('click', '#actorview', function(){
+            var id = $(this).data("id")
+            $.ajax({
+              url:"../php/fetch-image.php",
+              method:"POST",
+              data:{id},
+              success:function(data)
+              {
+                    $(".modal-body").html(data)
+              }
+            })
+        }) 
       //delete
       $(document).on('click', '#actor-delete', function(){
             var id = $(this).data("id")

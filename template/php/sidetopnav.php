@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-    <a class="sidebar-brand brand-logo" href=""><img src="../assets/images/logo.svg" alt="logo" /></a>
-    <a class="sidebar-brand brand-logo-mini" href=""><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
+    <a class="sidebar-brand brand-logo" href=""><img src="../assets/images/logo1.png" alt="logo" /></a>
+    <a class="sidebar-brand brand-logo-mini" href=""><img src="../assets/images/logo1.png" alt="logo" /></a>
   </div>
   <ul class="nav">
     <li class="nav-item profile">
@@ -78,7 +78,15 @@
         <span class="menu-title">ticket booking</span>
       </a>
     </li>
- 
+    <div class="hr-2 bg-white"></div>
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="create-product.php">
+        <span class="menu-icon">
+          <i class="mdi mdi-chart-bar"></i>
+        </span>
+        <span class="menu-title">Create Product</span>
+      </a>
+    </li>
   </ul>
 </nav>
 <!-- partial -->
@@ -86,7 +94,7 @@
   <!-- partial:partials/_navbar.html -->
   <nav class="navbar p-0 fixed-top d-flex flex-row">
     <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo1.png" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
